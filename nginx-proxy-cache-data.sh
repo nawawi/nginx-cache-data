@@ -79,7 +79,7 @@ get_file_host() {
     local _file="$1";
     local _host="";
 
-    _host="$(get_file_key "${_file}" |sed -e 's/httpsGET//g' -e 's/httpGET//g' -e 's/\/.*//g')";
+    _host="$(get_file_key "${_file}" |$_BIN_SED -e 's/httpsGET//g' -e 's/httpGET//g' -e 's/\/.*//g')";
     echo $_host;
 }
 
