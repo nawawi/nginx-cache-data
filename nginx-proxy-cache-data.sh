@@ -6,6 +6,11 @@
 # debug
 #set -x
 
+if [ "x${UID}" != "x0" ]; then
+    echo "This script must run as root ${UID}";
+    exit 1;
+fi
+
 # path/file
 _BASEPATH="/tmp/nginx-proxy-cache-data";
 _SRCPATH="/var/run/nginx-proxy-cache";
@@ -140,7 +145,7 @@ set_time_file "${_LOCKFILE}";
 set_perm "${_BASEPATH}";
 
 _DATA_FILE_TMP="${_DATA_FILE}.tmp";
-:>$_DATA_FILE_TMP;
+echo "# HOST|SIZE_IN_BYTE|URL" > $_DATA_FILE_TMP;
 
 find $_SRCPATH -type f ! -size 0 |while read f; do
     _size="$(get_file_size $f)";
