@@ -30,18 +30,6 @@ _BIN_SORT="$(type -p sort)";
 _CHOWN="runcloud-www:runcloud-www";
 _CHMOD="600";
 
-# helper, strip string
-rm_str() {
-    local _str="$1";
-    local _chr="$2";
-    [ -z "$_chr" ] && _chr='"';
-    if [ -n "$_str" -a -n "$_chr" ]; then
-        echo ${_str//$_chr};
-        return 0;
-    fi;
-    return 1;
-}
-
 # helper, set permission
 set_perm() {
     local path="$1";
@@ -59,6 +47,7 @@ set_time_file() {
     set_perm "${_file}";
 }
 
+# get file size
 get_file_size() {
     local _file="$1";
     local _size="";
@@ -67,6 +56,7 @@ get_file_size() {
     echo $_size;
 }
 
+# get cache key
 get_file_key() {
     local _file="$1";
     local _key="";
@@ -75,6 +65,7 @@ get_file_key() {
     echo $_key;
 }
 
+# set url
 get_file_url() {
     local _file="$1";
     local _url="";
@@ -83,6 +74,7 @@ get_file_url() {
     echo $_url;
 }
 
+# get host
 get_file_host() {
     local _file="$1";
     local _host="";
