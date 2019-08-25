@@ -137,7 +137,7 @@ set_time_file "${_LOCKFILE}";
 set_perm "${_BASEPATH}";
 
 _DATA_FILE_TMP="${_DATA_FILE}.tmp";
-echo "# HOST|SIZE_IN_BYTE|URL" > $_DATA_FILE_TMP;
+:> $_DATA_FILE_TMP;
 
 find $_SRCPATH -type f ! -size 0 |while read f; do
     _size="$(get_file_size $f)";
