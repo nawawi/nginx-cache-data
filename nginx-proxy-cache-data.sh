@@ -147,7 +147,7 @@ find $_SRCPATH -type f ! -size 0 |while read f; do
     echo "${_host}|${_size}|${_url}" >> $_DATA_FILE_TMP;
 done
 
-$_BIN_SORT $_DATA_FILE_TMP > $_DATA_FILE;
+$_BIN_SORT -u $_DATA_FILE_TMP > $_DATA_FILE;
 set_perm "${_DATA_FILE}";
 rm $_DATA_FILE_TMP;
 
